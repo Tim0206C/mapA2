@@ -24,12 +24,10 @@ public class History extends AppCompatActivity {
 
         //click the report to see more details
         historyList.setOnItemClickListener((adapterView, view, i, l) -> {
-            Log.d("DDD","DDD");
+
             Intent intent = new Intent(getApplication(), Detail.class);
             //passed the report list to History activity
-            Log.d("ssss","SSs");
             intent.putExtra("detail",historyManager.reports.get(i));
-            Log.d("AAA","AAA");
             startActivity(intent);
         });
 

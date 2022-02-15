@@ -7,56 +7,59 @@
     tools:context=".Restock">
 
     <EditText
+        android:id="@+id/addQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/enter_new_quantity"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/lin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:autofillHints="Enter New Quantity"
+        android:hint="@string/enter_new_quantity"
         android:inputType="number"
-        android:id="@+id/addQuantity"/>
+        app:layout_constraintBottom_toTopOf="@+id/lin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.627" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="301dp" />
+        app:layout_constraintGuide_begin="185dp" />
 
     <LinearLayout
         android:id="@+id/lin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74"
-        android:gravity="center"
-        >
+        app:layout_constraintVertical_bias="0.89">
 
         <Button
             android:id="@+id/confirmBtn"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="1dp"
             android:background="@color/CornflowerBlue"
             android:text="@string/ok"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_marginRight="1dp"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:textSize="20sp" />
+
         <Button
-            android:layout_marginLeft="1dp"
             android:id="@+id/cancelBtn"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
             android:background="@color/CornflowerBlue"
             android:text="@string/cancel"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <ListView
@@ -67,5 +70,6 @@
         android:dividerHeight="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline4"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.07999998" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

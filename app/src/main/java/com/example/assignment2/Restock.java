@@ -63,8 +63,7 @@ public class Restock extends AppCompatActivity implements View.OnClickListener {
         if(selected.getName().length()>0 && quantity>0){
             productsManager.addQty(selected,quantity);
             selected = new Product();
-//            ProductListAdapter adapter = new ProductListAdapter(productsManager.products,this);
-//            restockAdapterList.setAdapter(adapter);
+
             adapter.notifyDataSetChanged();
         }else{
             Toast.makeText(this, "All fields are REQUIRED", Toast.LENGTH_LONG).show();

@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 total.setText(String.valueOf(amount));
                 ready = true;
             }else{
-                total.setText("0");
+                total.setText("Total");
             }
             productType.setText(name);
 
@@ -129,7 +129,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     selected = new Product();
                     ready = false;
                     productType.setText("Product Type");
-                    quantity.setText("Total");
+                    quantity.setText("Quantity");
+                    total.setText("Total");
 
                 }else{
                     Toast.makeText(this,"All fields are required!!!", Toast.LENGTH_LONG).show();
