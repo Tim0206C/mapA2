@@ -3,10 +3,10 @@ package com.example.assignment2;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.NumberPicker;
@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Product selected;
     HistoryManager historyManager;
     ProductsManager productsManager;
+
+    ProductListAdapter adapter;
 
     Button manager;
     Button buy;
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         productAdapterList = findViewById(R.id.productList);
          products = productsManager.products;
 
-        ProductListAdapter adapter = new ProductListAdapter(products,this);
+        adapter = new ProductListAdapter(products,this);
         productAdapterList.setAdapter(adapter);
         productAdapterList.setOnItemClickListener((adapterView, view, position, l) -> {
             selected = (Product) adapterView.getItemAtPosition(position);
@@ -81,13 +83,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //check the quantity is selected or not
             if(quantity.getText().toString().matches("^[0-9]$|^[1-9][0-9]$|^(100)$")){
-                Log.d("ssss","SSs"+quantity.getText().toString());
+
                 double amount =Double.parseDouble(String.valueOf((float)(selected.getPrice() *Integer.parseInt(quantity.getText().toString())))) ;
                 //double amount =selected.getPrice() *Integer.parseInt(quantity.getText().toString());
                 total.setText(String.valueOf(amount));
                 ready = true;
             }else{
-                total.setText(String.valueOf("0"));
+                total.setText("0");
             }
             productType.setText(name);
 
@@ -95,12 +97,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onClick(View view) {
         int id = view.getId();
         switch (id){
             case R.id.manager:
-                //do manager
+                //open the manager activity
+                Intent intent =new Intent(this,Manager.class);
+                startActivity(intent);
                 break;
             case R.id.buy:
                 if(ready){
@@ -117,10 +122,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     builder.show();
 
                     //reset the product adapter to show the quantity
-                    ProductListAdapter adapter = new ProductListAdapter(productsManager.products,this);
-                    productAdapterList.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
 
-                    ((MyApp)getApplication()).selectedProduct = new Product();
+                    //((MyApp)getApplication()).selectedProduct = new Product();
+                    //reset the data to next purchase
+                    selected = new Product();
+                    ready = false;
+                    productType.setText("Product Type");
+                    quantity.setText("Total");
 
                 }else{
                     Toast.makeText(this,"All fields are required!!!", Toast.LENGTH_LONG).show();

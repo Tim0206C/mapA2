@@ -26,6 +26,16 @@ public class ProductsManager {
                 it.next().setQuantityInStock(buy.getQuantityInStock()-num);
             }
         }
+    }
 
+    public void addQty(Product add ,int num) {
+        ListIterator<Product> it = products.listIterator();
+        while (it.hasNext()){
+            String name = it.next().getName();
+            if(name.equals(add.getName())){
+                it.previous();
+                it.next().setQuantityInStock(add.getQuantityInStock()+num);
+            }
+        }
     }
 }

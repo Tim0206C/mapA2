@@ -5,4 +5,7 @@
     <string name="manager">MANAGER</string>
     <string name="total">Total</string>
     <string name="quantity">Quantity</string>
+    <string name="enter_new_quantity">Enter New Quantity</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
 </resources>
